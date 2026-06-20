@@ -8,9 +8,7 @@ public:
     explicit GameController(
         GameMode mode,
         CellState firstPlayer = CellState::X,
-        CellState humanMark = CellState::X,
-        AvatarType playerXAvatar = AvatarType::Cat,
-        AvatarType playerOAvatar = AvatarType::Dog
+        CellState humanMark = CellState::X
     );
 
     // 启动游戏主循环

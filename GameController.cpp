@@ -1,14 +1,8 @@
 #include "GameController.h"
 #include <iostream>
 
-GameController::GameController(
-    GameMode mode,
-    CellState firstPlayer,
-    CellState humanMark,
-    AvatarType playerXAvatar,
-    AvatarType playerOAvatar
-)
-    : game_(mode, firstPlayer, humanMark, playerXAvatar, playerOAvatar) {}
+GameController::GameController(GameMode mode, CellState firstPlayer, CellState humanMark)
+    : game_(mode, firstPlayer, humanMark) {}
 
 void GameController::run() {
     while (!game_.isGameOver()) {

@@ -16,7 +16,4 @@ public:
 private:
     // 将 CellState 转换为字符
     char cellToChar(CellState cell) const;
-
-    // 将 AvatarType 转换为中文名称
-    const char* avatarToName(AvatarType avatar) const;
 };

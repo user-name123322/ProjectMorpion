@@ -15,12 +15,3 @@ enum class GameMode {
     HumanVsHuman,
     HumanVsAI
 };
-
-// 玩家形象卡
-enum class AvatarType {
-    Cat,
-    Dog,
-    Bird,
-    RedPanda,
-    Fish
-};
