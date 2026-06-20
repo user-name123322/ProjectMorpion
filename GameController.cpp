@@ -1,8 +1,14 @@
 #include "GameController.h"
 #include <iostream>
 
-GameController::GameController(GameMode mode)
-    : game_(mode) {}
+GameController::GameController(
+    GameMode mode,
+    CellState firstPlayer,
+    CellState humanMark,
+    AvatarType playerXAvatar,
+    AvatarType playerOAvatar
+)
+    : game_(mode, firstPlayer, humanMark, playerXAvatar, playerOAvatar) {}
 
 void GameController::run() {
     while (!game_.isGameOver()) {
@@ -18,12 +24,14 @@ void GameController::handleTurn() {
 
     while (!moved) {
         Player* player = nullptr;
+        const CellState currentPlayer = game_.getCurrentPlayer();
 
-        if (game_.getCurrentPlayer() == CellState::X) {
-            player = &game_.getHumanX();
-        }
-        else if (game_.getMode() == GameMode::HumanVsAI) {
+        if (game_.getMode() == GameMode::HumanVsAI &&
+            currentPlayer == game_.getAIPlayer().getMark()) {
             player = &game_.getAIPlayer();
+        }
+        else if (currentPlayer == CellState::X) {
+            player = &game_.getHumanX();
         }
         else {
             player = &game_.getHumanO();

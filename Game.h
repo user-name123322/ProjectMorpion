@@ -5,7 +5,13 @@
 
 class Game {
 public:
-    explicit Game(GameMode mode);
+    explicit Game(
+        GameMode mode,
+        CellState firstPlayer = CellState::X,
+        CellState humanMark = CellState::X,
+        AvatarType playerXAvatar = AvatarType::Cat,
+        AvatarType playerOAvatar = AvatarType::Dog
+    );
 
     // 重置游戏
     void reset();
@@ -15,6 +21,8 @@ public:
 
     CellState getCurrentPlayer() const;
     CellState getWinner() const;
+    CellState getHumanMark() const;
+    AvatarType getAvatar(CellState mark) const;
 
     bool isGameOver() const;
     bool isDraw() const;
@@ -42,8 +50,12 @@ private:
     HumanPlayer humanO_;
     AIPlayer aiPlayer_;
 
+    CellState firstPlayer_ = CellState::X;
+    CellState humanMark_ = CellState::X;
     CellState currentPlayer_ = CellState::X;
     CellState winner_ = CellState::Empty;
+    AvatarType playerXAvatar_ = AvatarType::Cat;
+    AvatarType playerOAvatar_ = AvatarType::Dog;
 
     bool gameOver_ = false;
     bool draw_ = false;

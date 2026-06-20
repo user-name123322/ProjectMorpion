@@ -36,15 +36,15 @@ void BoardView::drawStatus(const Game& game) const {
             std::cout << "游戏结束：平局！\n";
         }
         else {
-            std::cout << "游戏结束：玩家 "
-                << (game.getWinner() == CellState::X ? 'X' : 'O')
-                << " 获胜！\n";
+            const CellState winner = game.getWinner();
+            std::cout << "游戏结束：玩家 " << cellToChar(winner)
+                << "（" << avatarToName(game.getAvatar(winner)) << "）获胜！\n";
         }
     }
     else {
-        std::cout << "当前回合：玩家 "
-            << (game.getCurrentPlayer() == CellState::X ? 'X' : 'O')
-            << "\n";
+        const CellState currentPlayer = game.getCurrentPlayer();
+        std::cout << "当前回合：玩家 " << cellToChar(currentPlayer)
+            << "（" << avatarToName(game.getAvatar(currentPlayer)) << "）\n";
     }
 }
 
@@ -58,4 +58,21 @@ char BoardView::cellToChar(CellState cell) const {
     }
 
     return ' ';
+}
+
+const char* BoardView::avatarToName(AvatarType avatar) const {
+    switch (avatar) {
+    case AvatarType::Cat:
+        return "小猫";
+    case AvatarType::Dog:
+        return "小狗";
+    case AvatarType::Bird:
+        return "小鸟";
+    case AvatarType::RedPanda:
+        return "小熊猫";
+    case AvatarType::Fish:
+        return "小鱼";
+    default:
+        return "未知形象";
+    }
 }

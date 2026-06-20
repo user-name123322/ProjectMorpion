@@ -5,7 +5,13 @@
 
 class GameController {
 public:
-    explicit GameController(GameMode mode);
+    explicit GameController(
+        GameMode mode,
+        CellState firstPlayer = CellState::X,
+        CellState humanMark = CellState::X,
+        AvatarType playerXAvatar = AvatarType::Cat,
+        AvatarType playerOAvatar = AvatarType::Dog
+    );
 
     // 启动游戏主循环
     void run();

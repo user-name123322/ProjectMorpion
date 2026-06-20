@@ -1,16 +1,26 @@
 #include "Game.h"
 
-Game::Game(GameMode mode)
+Game::Game(
+    GameMode mode,
+    CellState firstPlayer,
+    CellState humanMark,
+    AvatarType playerXAvatar,
+    AvatarType playerOAvatar
+)
     : mode_(mode),
     humanX_(CellState::X),
     humanO_(CellState::O),
-    aiPlayer_(CellState::O) {
+    aiPlayer_(humanMark == CellState::X ? CellState::O : CellState::X),
+    firstPlayer_(firstPlayer),
+    humanMark_(humanMark),
+    playerXAvatar_(playerXAvatar),
+    playerOAvatar_(playerOAvatar) {
     reset();
 }
 
 void Game::reset() {
     board_.reset();
-    currentPlayer_ = CellState::X;
+    currentPlayer_ = firstPlayer_;
     winner_ = CellState::Empty;
     gameOver_ = false;
     draw_ = false;
@@ -30,6 +40,14 @@ CellState Game::getCurrentPlayer() const {
 
 CellState Game::getWinner() const {
     return winner_;
+}
+
+CellState Game::getHumanMark() const {
+    return humanMark_;
+}
+
+AvatarType Game::getAvatar(CellState mark) const {
+    return mark == CellState::X ? playerXAvatar_ : playerOAvatar_;
 }
 
 bool Game::isGameOver() const {
