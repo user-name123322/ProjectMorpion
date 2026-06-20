@@ -28,10 +28,10 @@ public:
     // 执行一步落子
     bool makeMove(int row, int col);
 
-    // TODO 4：判断指定棋子是否获胜
+    // 判断指定棋子是否获胜
     bool checkWinner(CellState mark) const;
 
-    // TODO 5：切换当前玩家
+    // 切换当前玩家
     void switchPlayer();
 
 private:

@@ -22,7 +22,7 @@ class HumanPlayer : public Player {
 public:
     explicit HumanPlayer(CellState mark);
 
-    // TODO 2：让人类玩家从命令行输入坐标
+    // 让人类玩家从命令行输入坐标
     std::pair<int, int> play(const Board& board) override;
 };
 
@@ -30,6 +30,6 @@ class AIPlayer : public Player {
 public:
     explicit AIPlayer(CellState mark);
 
-    // TODO 3：实现简单的 AI 落子逻辑
+    // 简单 AI：选择第一个可落子的空格
     std::pair<int, int> play(const Board& board) override;
 };

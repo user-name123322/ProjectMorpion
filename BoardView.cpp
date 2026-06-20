@@ -11,7 +11,7 @@ void BoardView::draw(const Game& game) const {
 }
 
 void BoardView::drawBoard(const Board& board) const {
-    std::cout << "坐标说明：行和列均为 0 到 2\n\n";
+    std::cout << "坐标说明：行和列均为 0 到 " << BOARD_SIZE - 1 << "\n\n";
 
     std::cout << "     0   1   2\n";
     std::cout << "   +---+---+---+\n";

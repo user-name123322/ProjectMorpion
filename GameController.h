@@ -11,7 +11,7 @@ public:
     void run();
 
 private:
-    // TODO 6：处理一个回合
+    // 处理一个回合
     void handleTurn();
 
 private:

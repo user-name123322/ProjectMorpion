@@ -22,7 +22,7 @@ public:
     // 判断坐标是否在棋盘范围内
     bool isInside(int row, int col) const;
 
-    // TODO 1：判断棋盘是否已满
+    // 判断棋盘是否已满
     bool isFull() const;
 
 private:
