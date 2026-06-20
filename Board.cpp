@@ -36,8 +36,13 @@ bool Board::isInside(int row, int col) const {
 }
 
 bool Board::isFull() const {
-    // TODO 1：
-    // 遍历棋盘，如果还存在 Empty，说明棋盘未满
+    for (const auto& row : grid_) {
+        for (CellState cell : row) {
+            if (cell == CellState::Empty) {
+                return false;
+            }
+        }
+    }
 
-    return false;
+    return true;
 }

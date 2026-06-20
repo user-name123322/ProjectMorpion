@@ -82,13 +82,35 @@ bool Game::makeMove(int row, int col) {
 }
 
 bool Game::checkWinner(CellState mark) const {
-    // TODO 4：
-    // 判断横向、纵向、两条对角线是否有三个相同的 mark
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        if (board_.getCell(i, 0) == mark &&
+            board_.getCell(i, 1) == mark &&
+            board_.getCell(i, 2) == mark) {
+            return true;
+        }
+
+        if (board_.getCell(0, i) == mark &&
+            board_.getCell(1, i) == mark &&
+            board_.getCell(2, i) == mark) {
+            return true;
+        }
+    }
+
+    if (board_.getCell(0, 0) == mark &&
+        board_.getCell(1, 1) == mark &&
+        board_.getCell(2, 2) == mark) {
+        return true;
+    }
+
+    if (board_.getCell(0, 2) == mark &&
+        board_.getCell(1, 1) == mark &&
+        board_.getCell(2, 0) == mark) {
+        return true;
+    }
 
     return false;
 }
 
 void Game::switchPlayer() {
-    // TODO 5：
-    // 在 X 和 O 之间切换当前玩家
+    currentPlayer_ = currentPlayer_ == CellState::X ? CellState::O : CellState::X;
 }
