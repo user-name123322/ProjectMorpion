@@ -143,6 +143,7 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ConsoleInput.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardView.h" />
     <ClInclude Include="Config.h" />
@@ -151,6 +152,7 @@
     <ClInclude Include="Player.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ConsoleInput.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardView.cpp" />
     <ClCompile Include="Game.cpp" />

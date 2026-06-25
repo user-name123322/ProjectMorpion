@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Game.h"
 #include "BoardView.h"
+#include "Game.h"
 
 class GameController {
 public:
@@ -11,11 +11,10 @@ public:
         CellState humanMark = CellState::X
     );
 
-    // 启动游戏主循环
     void run();
 
 private:
-    // 处理一个回合
+    Player& currentPlayer();
     void handleTurn();
 
 private:

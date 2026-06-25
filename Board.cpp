@@ -27,6 +27,14 @@ CellState Board::getCell(int row, int col) const {
     return grid_[row][col];
 }
 
+CellState Board::getCellOrDefault(int row, int col, CellState defaultValue) const {
+    if (!isInside(row, col)) {
+        return defaultValue;
+    }
+
+    return grid_[row][col];
+}
+
 bool Board::isEmpty(int row, int col) const {
     return isInside(row, col) && grid_[row][col] == CellState::Empty;
 }

@@ -1,5 +1,7 @@
 #include "BoardView.h"
+
 #include <iostream>
+#include <string>
 
 void BoardView::draw(const Game& game) const {
     std::cout << "\n============================\n";
@@ -12,9 +14,8 @@ void BoardView::draw(const Game& game) const {
 
 void BoardView::drawBoard(const Board& board) const {
     std::cout << "坐标说明：行和列均为 0 到 " << BOARD_SIZE - 1 << "\n\n";
-
-    std::cout << "     0   1   2\n";
-    std::cout << "   +---+---+---+\n";
+    drawColumnHeader();
+    drawDivider();
 
     for (int row = 0; row < BOARD_SIZE; ++row) {
         std::cout << " " << row << " |";
@@ -24,7 +25,7 @@ void BoardView::drawBoard(const Board& board) const {
         }
 
         std::cout << "\n";
-        std::cout << "   +---+---+---+\n";
+        drawDivider();
     }
 
     std::cout << "\n";
@@ -40,12 +41,28 @@ void BoardView::drawStatus(const Game& game) const {
                 << cellToChar(game.getWinner())
                 << " 获胜！\n";
         }
+        return;
     }
-    else {
-        std::cout << "当前回合：玩家 "
-            << cellToChar(game.getCurrentPlayer())
-            << "\n";
+
+    std::cout << "当前回合：玩家 "
+        << cellToChar(game.getCurrentPlayer())
+        << "\n";
+}
+
+void BoardView::drawColumnHeader() const {
+    std::cout << "    ";
+    for (int col = 0; col < BOARD_SIZE; ++col) {
+        std::cout << " " << col << "  ";
     }
+    std::cout << "\n";
+}
+
+void BoardView::drawDivider() const {
+    std::cout << "   ";
+    for (int col = 0; col < BOARD_SIZE; ++col) {
+        std::cout << "+---";
+    }
+    std::cout << "+\n";
 }
 
 char BoardView::cellToChar(CellState cell) const {

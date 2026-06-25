@@ -1,4 +1,5 @@
 #include "GameController.h"
+
 #include <iostream>
 
 GameController::GameController(GameMode mode, CellState firstPlayer, CellState humanMark)
@@ -13,25 +14,27 @@ void GameController::run() {
     view_.draw(game_);
 }
 
+Player& GameController::currentPlayer() {
+    const CellState current = game_.getCurrentPlayer();
+
+    if (game_.getMode() == GameMode::HumanVsAI &&
+        current == game_.getAIPlayer().getMark()) {
+        return game_.getAIPlayer();
+    }
+
+    if (current == CellState::X) {
+        return game_.getHumanX();
+    }
+
+    return game_.getHumanO();
+}
+
 void GameController::handleTurn() {
     bool moved = false;
 
     while (!moved) {
-        Player* player = nullptr;
-        const CellState currentPlayer = game_.getCurrentPlayer();
-
-        if (game_.getMode() == GameMode::HumanVsAI &&
-            currentPlayer == game_.getAIPlayer().getMark()) {
-            player = &game_.getAIPlayer();
-        }
-        else if (currentPlayer == CellState::X) {
-            player = &game_.getHumanX();
-        }
-        else {
-            player = &game_.getHumanO();
-        }
-
-        const auto [row, col] = player->play(game_.getBoard());
+        Player& player = currentPlayer();
+        const auto [row, col] = player.play(game_.getBoard());
         moved = game_.makeMove(row, col);
 
         if (!moved) {

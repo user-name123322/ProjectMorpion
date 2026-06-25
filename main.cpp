@@ -1,8 +1,8 @@
 #include "Config.h"
+#include "ConsoleInput.h"
 #include "GameController.h"
 
 #include <iostream>
-#include <limits>
 #include <random>
 
 #ifdef _WIN32
@@ -22,22 +22,6 @@ CellState randomFirstPlayer() {
 char markToChar(CellState mark) {
     return mark == CellState::X ? 'X' : 'O';
 }
-
-void clearInvalidInput() {
-    std::cin.clear();
-    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-}
-
-int readChoice(int minValue, int maxValue) {
-    int choice = 0;
-
-    while (!(std::cin >> choice) || choice < minValue || choice > maxValue) {
-        std::cout << "输入无效，请输入 " << minValue << " 到 " << maxValue << "：";
-        clearInvalidInput();
-    }
-
-    return choice;
-}
 }
 
 int main() {
@@ -53,19 +37,17 @@ int main() {
     std::cout << "请选择游戏模式：\n";
     std::cout << "1. 双人对战\n";
     std::cout << "2. 人机对战\n";
-    std::cout << "请输入选择：";
 
-    const int modeChoice = readChoice(1, 2);
-    GameMode mode = modeChoice == 1 ? GameMode::HumanVsHuman : GameMode::HumanVsAI;
+    const int modeChoice = ConsoleInput::readIntInRange("请输入选择：", 1, 2);
+    const GameMode mode = modeChoice == 1 ? GameMode::HumanVsHuman : GameMode::HumanVsAI;
     CellState humanMark = CellState::X;
 
     if (mode == GameMode::HumanVsAI) {
         std::cout << "请选择你的棋子：\n";
         std::cout << "1. X\n";
         std::cout << "2. O\n";
-        std::cout << "请输入选择：";
 
-        const int markChoice = readChoice(1, 2);
+        const int markChoice = ConsoleInput::readIntInRange("请输入选择：", 1, 2);
         humanMark = markChoice == 1 ? CellState::X : CellState::O;
         std::cout << "你选择了玩家 " << markToChar(humanMark) << "。\n";
         std::cout << "AI 是玩家 "
@@ -80,8 +62,7 @@ int main() {
     controller.run();
 
     std::cout << "\n按回车键退出程序...";
-
-    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    ConsoleInput::clearInvalidInput();
     std::cin.get();
 
     return 0;
