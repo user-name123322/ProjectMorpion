@@ -1,9 +1,22 @@
 <mxfile host="app.diagrams.net">
   <diagram name="第 1 页" id="mE28P1ySs3CAv08a9Gmi">
-    <mxGraphModel>
+    <mxGraphModel dx="987" dy="445" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <UserObject label="" mermaidData="{&#xa;  &quot;data&quot;: &quot;\nclassDiagram\n\n    direction LR\n\n  \n\n    class Board {\n\n        -grid_\n\n        +placeMark()\n\n        +isEmpty()\n\n        +isFull()\n\n    }\n\n  \n\n    class Game {\n\n        -board_\n\n        -currentPlayer_\n\n        -winner_\n\n        +makeMove()\n\n        +checkWinner()\n\n        +switchPlayer()\n\n    }\n\n  \n\n    class Player {\n\n        &lt;&lt;abstract&gt;&gt;\n\n        #mark_\n\n        +getMark()\n\n        +play()\n\n    }\n\n  \n\n    class HumanPlayer {\n\n        +play()\n\n    }\n\n  \n\n    class AIPlayer {\n\n        +play()\n\n    }\n\n  \n\n    class BoardView {\n\n        +draw()\n\n        +drawBoard()\n\n        +drawStatus()\n\n    }\n\n  \n\n    class GameController {\n\n        +run()\n\n        -currentPlayer()\n\n        -handleTurn()\n\n    }\n\n  \n\n    class ConsoleInput {\n\n        &lt;&lt;utility&gt;&gt;\n\n        +readIntInRange()\n\n        +readBoardMove()\n\n    }\n\n  \n\n    Player &lt;|-- HumanPlayer\n\n    Player &lt;|-- AIPlayer\n\n  \n\n    Game *-- Board\n\n    Game *-- HumanPlayer\n\n    Game *-- AIPlayer\n\n  \n\n    GameController *-- Game\n\n    GameController *-- BoardView\n\n    HumanPlayer ..&gt; ConsoleInput\n\n    BoardView ..&gt; Game\n&quot;,&#xa;  &quot;config&quot;: null&#xa;}" id="2k-Y0WDAGGRuefl_MYui-11">
+          <mxCell connectable="0" parent="1" style="group;transparentBounds=1;editIcon=1;lockedGroup=0;groupPadding=20;" vertex="1">
+            <mxGeometry as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;b&gt;&lt;/b&gt;" mermaidId="n: " mermaidBaseStyle="swimlane;html=1;fontStyle=0;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" mermaidBaseValue="&lt;b&gt;&lt;/b&gt;" id="2k-Y0WDAGGRuefl_MYui-12">
+          <mxCell parent="2k-Y0WDAGGRuefl_MYui-11" style="swimlane;html=1;fontStyle=0;fontSize=16;align=center;verticalAlign=middle;horizontal=1;childLayout=stackLayout;startSize=48;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=0;marginTop=12;marginBottom=12;stackSpacing=0;swimlaneFillColor=light-dark(#ECECFF,#1f2020);whiteSpace=wrap;fillColor=light-dark(#ECECFF,#1f2020);strokeColor=light-dark(#9370DB,#cccccc);fontColor=light-dark(#333333,#cccccc);fontFamily=Trebuchet MS,Verdana,Arial,sans-serif;" vertex="1">
+            <mxGeometry height="92" width="29" x="40" y="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="2k-Y0WDAGGRuefl_MYui-13" parent="2k-Y0WDAGGRuefl_MYui-12" style="line;strokeWidth=1;fillColor=none;spacingLeft=3;spacingRight=3;rotatable=0;points=[];strokeColor=inherit;" vertex="1">
+          <mxGeometry height="20" width="29" y="60" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
